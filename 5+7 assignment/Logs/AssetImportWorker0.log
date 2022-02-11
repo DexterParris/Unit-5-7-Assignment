@@ -531,3 +531,4 @@ Received Import Request.
   artifactKey: Guid(bd272920e25d9c54ab56bf14485edf31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/Enchanted Land.asset using Guid(bd272920e25d9c54ab56bf14485edf31) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'TextMeshPro/Distance Field': fallback shader 'TextMeshPro/Mobile/Distance Field' not found
  -> (artifact id: '2fd6630f502cbd39902b2f9a584b5eb1') in 0.035606 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
