@@ -26,7 +26,7 @@ public class BoxScript : MonoBehaviour
 
     IEnumerator move()
     {
-        for(int i = 0; 1<10; i++)
+        for(int i = 0; 1<5; i++)
         {
             rb.velocity = new Vector2(2,0);
             yield return new WaitForSeconds(1);
