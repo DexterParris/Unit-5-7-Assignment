@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject selectedButton;
+    public GameObject target;
+    public GameObject uiParent;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        if(selectedButton != null)
+        {
+            selectedButton.SetActive(true);
+        }
+        else if (selectedButton == null)
+        {
+            selectedButton.SetActive(false);
+        }
+    }
+    public void ChangeMenu()
+    {
+        target.SetActive(true);
+        uiParent.SetActive(false);
+        selectedButton.GetComponent<Button>().Select();
     }
 }
