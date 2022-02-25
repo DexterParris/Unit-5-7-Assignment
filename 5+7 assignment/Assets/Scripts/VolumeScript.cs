@@ -7,23 +7,49 @@ using TMPro;
 public class VolumeScript : MonoBehaviour
 {
     public float volumeValue;
-    public TextMeshProUGUI volumeText;
-    string displaytext = "a"; 
+    public float musicVolumeValue;
+    public float sfxVolumeValue;
 
-    public Slider vslider;
+    public TextMeshProUGUI volumeText;
+    public TextMeshProUGUI musicText;
+    public TextMeshProUGUI sfxText;
+
+    public Slider mSlider;
+    public Slider vmSlider;
+    public Slider sfxSlider;
 
     // Start is called before the first frame update
     void Start()
     {
         volumeValue = PlayerPrefs.GetFloat("uiVolume");
-        vslider.value = volumeValue;
+        musicVolumeValue = PlayerPrefs.GetFloat("musicVolume");
+        sfxVolumeValue = PlayerPrefs.GetFloat("sfxVolume");
+
+
+        mSlider.value = volumeValue;
+        vmSlider.value = musicVolumeValue;
+        sfxSlider.value = sfxVolumeValue;
     }
 
-    public void ChangeVolume()
+    public void ChangeMasterVolume()
     {
-        volumeValue = vslider.value;
+        volumeValue = mSlider.value;
         PlayerPrefs.SetFloat("uiVolume", volumeValue);
-        volumeText.text = volumeValue.ToString("F2");
+        volumeText.text = (volumeValue*100).ToString("F0")+"%";
+    }
+
+    public void ChangeMusicVolume()
+    {
+        musicVolumeValue = vmSlider.value;
+        PlayerPrefs.SetFloat("musicVolume", musicVolumeValue);
+        musicText.text = (musicVolumeValue *100).ToString("F0") + "%";
+    }
+
+    public void ChangeSFXVolume()
+    {
+        sfxVolumeValue = sfxSlider.value;
+        PlayerPrefs.SetFloat("sfxVolume", sfxVolumeValue);
+        sfxText.text = (sfxVolumeValue *100).ToString("F0") + "%";
     }
 
 }
