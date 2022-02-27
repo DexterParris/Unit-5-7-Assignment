@@ -21,4 +21,6 @@ public class ButtonScript : MonoBehaviour
         uiParent.SetActive(false);
         selectedButton.GetComponent<Button>().Select();
     }
+
+
 }

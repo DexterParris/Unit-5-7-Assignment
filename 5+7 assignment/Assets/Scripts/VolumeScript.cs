@@ -13,8 +13,6 @@ public class VolumeScript : MonoBehaviour
 
     public AudioMixer mixer;
 
-    
-
     public TextMeshProUGUI volumeText;
     public TextMeshProUGUI musicText;
     public TextMeshProUGUI sfxText;
@@ -132,8 +130,5 @@ public class VolumeScript : MonoBehaviour
 
     }
 
-
-    
-    
 
 }
