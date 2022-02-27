@@ -2,28 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Audio;
 
 public class MuteScript : MonoBehaviour
 {
+    float volumeValue;
+    float musicVolumeValue;
+    float sfxVolumeValue;
 
-    public static bool _mute = false;
-    public TextMeshProUGUI mutetext;
-
-    bool mutestate = false;
+    public AudioMixer mixer;
     // Start is called before the first frame update
     void Start()
     {
+        volumeValue = PlayerPrefs.GetFloat("uiVolume");
+        musicVolumeValue = PlayerPrefs.GetFloat("musicVolume");
+        sfxVolumeValue = PlayerPrefs.GetFloat("sfxVolume");
+
         if (PlayerPrefs.GetInt("mute") == 0)
         {
-            mutestate = false;
-            _mute = mutestate;
-            mutetext.text = "Mute: Off";
+            mixer.SetFloat("MasterVol", Mathf.Log10(volumeValue)*20);
+            mixer.SetFloat("MusicVol", Mathf.Log10(musicVolumeValue)*20);
+            mixer.SetFloat("SFXVol", Mathf.Log10(sfxVolumeValue)*20);
         }
         else
         {
-            mutestate = true;
-            _mute = mutestate;
-            mutetext.text = "Mute: On";
+            mixer.SetFloat("MasterVol", -80f);
         }
     }
 
@@ -33,22 +36,5 @@ public class MuteScript : MonoBehaviour
         
     }
 
-    public void mutecheck()
-    {
-        if (PlayerPrefs.GetInt("mute") == 0)
-        {
-            PlayerPrefs.SetInt("mute", 1);
-            mutestate = true;
-            _mute = mutestate;
-            mutetext.text = "Mute: On";
-        }
-        else
-        {
-            PlayerPrefs.SetInt("mute", 0);
-            mutestate = false;
-            _mute = mutestate;
-            mutetext.text = "Mute: Off";
-        }
 
-    }
 }
