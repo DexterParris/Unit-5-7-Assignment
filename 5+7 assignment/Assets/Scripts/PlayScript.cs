@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayScript : MonoBehaviour
 {
-    public GameObject gameplay;
+    public GameObject uiParent;
 
-    public void gameplayon()
+    public AudioSource swordSlashSound;
+
+    private void Start()
     {
-        gameplay.SetActive(true);
+        swordSlashSound = GameObject.Find("SwordSlash").GetComponent<AudioSource>();   
+    }
+
+    public void GameplayStart()
+    {
+        SceneManager.LoadScene("GameplayScene");
 
     }
-    public void gameplayoff()
+
+    public void GameplayStop()
     {
-        gameplay.SetActive(false);
+        SceneManager.LoadScene("SampleScene");
     }
+
+    public void Cancel()
+    {
+        swordSlashSound.Play();
+        uiParent.SetActive(false);
+    }
+
 }
